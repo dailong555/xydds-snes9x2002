@@ -258,6 +258,21 @@ else ifeq ($(platform), miyoo)
    CFLAGS += -fomit-frame-pointer -ffast-math -fno-unroll-loops -flto -mcpu=arm926ej-s
    CFLAGS += -DFAST_ALIGNED_LSB_WORD_ACCESS
 
+# XYDDS
+else ifeq ($(platform), xydds)
+   TARGET := $(TARGET_NAME)_libretro.so
+   CC = /opt/xydds/usr/bin/arm-linux-gcc
+   CXX = /opt/xydds/usr/bin/arm-linux-g++
+   AR = /opt/xydds/usr/bin/arm-linux-ar
+   fpic := -fPIC
+   ARM_ASM = 1
+   ASM_CPU = 0
+   ASM_SPC700 = 0
+   SHARED := -shared -Wl,--version-script=libretro/link.T -Wl,--no-undefined
+   CFLAGS += -fomit-frame-pointer -ffast-math -fno-unroll-loops -flto
+   CFLAGS += -marm -mfpu=neon-vfpv4 -mfloat-abi=hard -DARM -mcpu=cortex-a7
+   CFLAGS += -DFAST_ALIGNED_LSB_WORD_ACCESS
+
 # Windows MSVC 2010 x64
 else ifeq ($(platform), windows_msvc2010_x64)
 	CC  = cl.exe
