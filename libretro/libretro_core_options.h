@@ -133,7 +133,7 @@ struct retro_core_option_v2_definition option_defs_us[] = {
          { "enabled",  NULL },
          { NULL, NULL },
       },
-      "enabled"
+      "disabled"
    },
    {
       "snes9x2002_low_pass_filter",

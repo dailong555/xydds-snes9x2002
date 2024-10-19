@@ -76,10 +76,7 @@ DEFINES += -DASMCPU
 endif
 
 
-DEFINES += -DARM_ASM
-DEFINES += -DRIGHTSHIFT_IS_SAR
-DEFINES += -finline -fsigned-char
-DEFINES += -ffast-math -fstrict-aliasing
+DEFINES += -DARM_ASM -DUSE_OLD_COLOUR_OPS
 
 else
 SOURCES += $(CORE_DIR)/ppu_.c
@@ -108,13 +105,7 @@ else ifeq ($(NO_GCC), 1)
 WARNINGS_DEFINES =
 CODE_DEFINES     =
 else
-WARNINGS_DEFINES = -Wall \
-						 -W \
-						 -Wno-unused-parameter \
-						 -Wno-parentheses \
-						 -Wno-write-strings \
-						 -Wno-comment
-CODE_DEFINES = -fomit-frame-pointer
+WARNINGS_DEFINES = 
 endif
 endif
 
